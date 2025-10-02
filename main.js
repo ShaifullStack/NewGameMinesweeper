@@ -6,8 +6,8 @@ const BOOMS = "💣";
 var gBoard;
 
 const gLevel = {
-  SIZE: 10,
-  MINES: 4,
+  SIZE: 12,
+  MINES: 32,
 };
 
 const gGame = {
@@ -112,9 +112,7 @@ function setMinesNegsCount() {
 
 
 function onCellClicked(elCell,i, j) {
-  console.log('onCellClicked got:', i, j, elCell)
   var cell = gBoard[i][j]
-  console.log(cell);
   if (cell.isMine) {
     elCell.innerText = BOOMS
     console.log("BOOM!")
@@ -122,6 +120,7 @@ function onCellClicked(elCell,i, j) {
     gameOver()
   } else if (cell.minesAroundCount > 0) {
     elCell.innerText = cell.minesAroundCount
+    console.log(cell.minesAroundCount);
   } else {
     elCell.innerText = ''
   }
@@ -143,7 +142,7 @@ function onCellMarked(event, elCell, i, j) {
   if (cell.isMarked) {
     elCell.innerHTML = FLAG
   } else {
-    elCell.innerHTML = WOOL 
+    elCell.innerHTML = WOOL
   }
 }
 
